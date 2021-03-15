@@ -21,55 +21,59 @@ function memoize(slow_function) {
 
     async function fast_function(input) {
 
-        var cachedChunks = {}
-        console.log(input)
-        cachedChunks[input] = '9'
-        // 1.Cache the result of slow_function using the caching functions.
-        if (!cachedChunks[input]) {
-            var promiseFresh = new Promise((resolve, reject) => {
-                // const value = slow_function(input)
-                // cache_store(input, value)
-                // resolve(value)
-                setTimeout(() => {
-                    resolve('promised1stFresh After 2 secs')
-                }, 3000)
-            })
+        return new Promise((resolve, reject) => {
 
-            promiseFresh.then((data) => {
-                console.log(data)
-            })
-        }
+            var cachedChunks = {}
+            console.log(input)
+            cachedChunks[input] = '9'
+            // 1.Cache the result of slow_function using the caching functions.
+            if (!cachedChunks[input]) {
+                var promiseFresh = new Promise((resolve, reject) => {
+                    // const value = slow_function(input)
+                    // cache_store(input, value)
+                    // resolve(value)
+                    setTimeout(() => {
+                        resolve('promised1stFresh After 2 secs')
+                    }, 3000)
+                })
 
-        // 2. Return the fastest:
-        else {
-            var promiseCached = new Promise((resolve, reject) => {
-                // const value = cache_retrieve(input)
-                // resolve(value)
-                setTimeout(() => {
-                    resolve('promiseCached After 1.7 sec')
-                }, 1700)
-            })
+                promiseFresh.then((data) => {
+                    console.log(data)
+                })
+            }
 
-            var promiseFresh = new Promise((resolve, reject) => {
-                // console.log(typeof(slow_function))
-                // async (input) =>  {
-                const value = slow_function(input)
-                // console.log(value)
-                resolve(value)
-                // }
+            // 2. Return the fastest:
+            else {
+                var promiseCached = new Promise((resolve, reject) => {
+                    // const value = cache_retrieve(input)
+                    // resolve(value)
+                    setTimeout(() => {
+                        resolve('promiseCached After 1.7 sec')
+                    }, 1700)
+                })
 
-                // // cache_store(input, value)
-                // // resolve(value)
-                // setTimeout(() => {
-                //     resolve('promiseFresh after 2 secs')
-                // }, 1000)
-            })
+                var promiseFresh = new Promise((resolve, reject) => {
+                    // console.log(typeof(slow_function))
+                    // async (input) =>  {
+                    const value = slow_function(input)
+                    // console.log(value)
+                    resolve(value)
+                    // }
 
-            Promise.race([promiseCached, promiseFresh]).then((value) => {
-                console.log(`fastest response: ${value}`)
-                resolve(value)
-            })
-        }
+                    // // cache_store(input, value)
+                    // // resolve(value)
+                    // setTimeout(() => {
+                    //     resolve('promiseFresh after 2 secs')
+                    // }, 1000)
+                })
+
+                Promise.race([promiseCached, promiseFresh]).then((value) => {
+                    console.log(`fastest response: ${value}`)
+                    resolve(value)
+                })
+            }
+
+        })
     }
     return fast_function;
 }
@@ -136,14 +140,14 @@ app.get("/historicalPerformance/:state", async (req, res) => {
     const input = `/city/list?state=${state}&page=1&items=10`
 
     // // PROBLEM!!! slow API response
-    const value = await slow_function(input)
-    res.send(value)
+    // const value = await slow_function(input)
+    // res.send(value)
 
     // SOLUTION
-    // const fast_function = memoize(slow_function)
-    // const value = await fast_function(input)
-    // console.log(`dinal ${value}`) 
-    // res.send(value)
+    const fast_function = memoize(slow_function)
+    const value = await fast_function(input)
+    console.log(`dinal ${value}`) 
+    res.send(value)
 
 });
 
