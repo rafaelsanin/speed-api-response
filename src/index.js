@@ -13,45 +13,67 @@ app.use(express.json({ limit: '1mb' }));
 const database = new Datastore('database.db');
 database.loadDatabase();
 
-// // runs faster than slow_function by using cache functions
-// function memoize(slow_function) {
 
-//     // 1.Cache the result of slow_function using the caching functions.
-//     if (cachedChunks.indexOf(input)) {
-//         //2.1 
-//         const value = slow_function(input)
-//         cache_store(input, value)
-//         return value
-//     } else {
-        
-//     }
-    
+// runs faster than slow_function by using cache functions
+function memoize(slow_function) {
 
-//     if key()
+    function fast_function(input) {
 
-//     res.on('data', function (chunk) {
-//         cachedChunks.push(chunk);
-//     });
+        var cachedChunks = {}
+        console.log(input)
+        cachedChunks[input] = '9'
+        // 1.Cache the result of slow_function using the caching functions.
+        if (!cachedChunks[input]) {
+            var promiseFresh = new Promise((resolve, reject) => {
+                // const value = slow_function(input)
+                // cache_store(input, value)
+                // resolve(value)
+                setTimeout(() => {
+                    resolve('promised1stFresh After 2 secs')
+                }, 2000)
+            })
 
-//     res.on('end', function () {
-//         const body = Buffer.concat(chunks);
-//         resData = body.toString()
-//         resolve(resData)
+            promiseFresh.then((data) => {
+                console.log(data)
+            })
+        }
 
-//     })
+        // 2. Return the fastest:
+        else {
+            var promiseCached = new Promise((resolve, reject) => {
+                // const value = cache_retrieve(input)
+                // resolve(value)
+                setTimeout(() => {
+                    resolve('promiseCached After 1 secs')
+                }, 2000)
+            })
 
-//     return fast_function;
-// }
+            var promiseFresh = new Promise((resolve, reject) => {
+                // const value = slow_function(input)
+                // cache_store(input, value)
+                // resolve(value)
+                setTimeout(() => {
+                    resolve('promiseFresh after 2 secs')
+                }, 1000)
+            })
 
-// const cachedChunks = [];
-// // // stores data (value) by key
-// async function cache_store(key, value) {
-//     cachedChunks.push({'key': key, 'value': value})
-// }
+            Promise.race([promiseCached, promiseFresh]).then((data) => {
+                console.log(data)
+            })
+        }
+    }
+    return fast_function;
+}
 
-// // // retrieves data by key (if it exists) 
-// // async function cache_retrieve(key) {
-// // }
+// // stores data (value) by key
+async function cache_store(key, value) {
+    cachedChunks[key] = value;
+}
+
+// // retrieves data by key (if it exists) 
+async function cache_retrieve(key) {
+    return cachedChunks[key];
+}
 
 // fetches data from a slow data source 
 async function slow_function(input) {
@@ -64,7 +86,7 @@ async function slow_function(input) {
             "port": null,
             "path": input,
             "headers": {
-                "x-rapidapi-key": "",
+                "x-rapidapi-key": "a4cb807fdfmshda5b5c2af63a1f8p166619jsn381026d83439",
                 "x-rapidapi-host": "mashvisor-api.p.rapidapi.com",
                 "useQueryString": true
             }
@@ -103,12 +125,13 @@ app.get("/historicalPerformance/:state", async (req, res) => {
     console.log(reqData);
     const input = `/city/list?state=${state}&page=1&items=10`
 
-    // PROBLEM!!! slow API response
-    const resData = await slow_function(input)
+    // // PROBLEM!!! slow API response
+    // const resData = await slow_function(input)
 
-    // SOLUTION In-Memory cache
-    //  fast_function = memoize(slow_function)
-    //  const resData = fast_function(input)
+    // SOLUTION
+    slow_function = slow_function(input) 
+    const fast_function = memoize(slow_function)
+    const resData = fast_function(input)
 
     res.send(resData)
 
