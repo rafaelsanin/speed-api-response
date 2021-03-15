@@ -9,24 +9,19 @@
 </head>
 
 <body>
-    <h1>Speed up slow function by caching</h1>
-    <h2>Get average price for: </h2>
+    <h1>Speed responses from thir-party API</h1>
+    <p>Retrieves the cities which has the biggest occupancy in a specific state: </p>
 
-    <label for="cities">Choose a city:</label>
+    <label for="cities">Choose a state:</label>
 
     <select name="cities" id="cities">
-        <option value="FL">Florida</option>
         <option value="WA">Washington</option>
+        <option value="NY">New York</option>
+        <option value="CA">California</option>
         <option value="TX">Texas</option>
     </select>
 
-    <label for="frst-date">From:</label>
-    <input type="date" id="frst-date" name="frst-date">
-
-    <label for="lst-date">To:</label>
-    <input type="date" id="lst-date" name="lst-date">
-
-    <button type="button" id="avg-button">Get average price</button>
+    <button type="button" id="avg-button">Get biggest occupancy</button>
 
     <script>
 
@@ -39,7 +34,7 @@
         async function fetchAvg(state) {
             prvTimestamp = Date.now()
             console.log({'state': state, 'timestamp': prvTimestamp})
-            const response = await fetch(`/historicalPerformance/${state}`);
+            const response = await fetch(`/biggestOccupancyByState/${state}`);
             const json = await response.json()
             lstTimestamp = Date.now()
             responseTime = (lstTimestamp-prvTimestamp) * 0.001

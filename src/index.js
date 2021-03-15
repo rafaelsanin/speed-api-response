@@ -23,21 +23,17 @@ function memoize(slow_function) {
 
         return new Promise((resolve, reject) => {
 
-            // var cachedChunks = {}
-            console.log(input)
-            // cachedChunks[input] = '9'
+            // console.log(input)
             // 1.Cache the result of slow_function using the caching functions.
             if (!cachedChunks[input]) {
                 var promiseFresh = new Promise((resolve, reject) => {
                     const value = slow_function(input)
                     resolve(value)
-                    // setTimeout(() => {
-                    //     resolve('promised1stFresh After 2 secs')
-                    // }, 3000)
                 })
 
                 promiseFresh.then((value) => {
                     console.log(`firstCached: ${value}`)
+                    // update the cache in either scenario
                     cache_store(input, value)
                     console.log(cachedChunks)
                     resolve(value)
@@ -47,26 +43,20 @@ function memoize(slow_function) {
             // 2. Return the fastest:
             else {
                 var promiseCached = new Promise((resolve, reject) => {
-                    // const value = cache_retrieve(input)
-                    // resolve(value)
-                    setTimeout(() => {
-                        resolve('promiseCached After 3 sec')
-                    }, 3000)
+                    const value = cache_retrieve(input)
+                    console.log('cache hit')
+                    resolve(value)
                 })
 
                 var promiseFresh = new Promise((resolve, reject) => {
                     const value = slow_function(input)
+                    console.log('cache missed')
                     resolve(value)
-
-                    // // cache_store(input, value)
-                    // // resolve(value)
-                    // setTimeout(() => {
-                    //     resolve('promiseFresh after 2 secs')
-                    // }, 1000)
                 })
 
                 Promise.race([promiseCached, promiseFresh]).then((value) => {
                     console.log(`fastest response: ${value}`)
+                    // update the cache in either scenario
                     cache_store(input, value)
                     console.log(cachedChunks)
                     resolve(value)
@@ -130,7 +120,8 @@ async function slow_function(input) {
     })
 }
 
-app.get("/historicalPerformance/:state", async (req, res) => {
+// This endpoint retrieves the cities has the biggest occupancy in a specific state.
+app.get("/biggestOccupancyByState/:state", async (req, res) => {
     
     const state = req.params.state
     const timestamp = Date.now()
