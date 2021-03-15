@@ -25,20 +25,22 @@ function memoize(slow_function) {
 
             // var cachedChunks = {}
             console.log(input)
-            cachedChunks[input] = '9'
+            // cachedChunks[input] = '9'
             // 1.Cache the result of slow_function using the caching functions.
             if (!cachedChunks[input]) {
                 var promiseFresh = new Promise((resolve, reject) => {
-                    // const value = slow_function(input)
-                    // cache_store(input, value)
-                    // resolve(value)
-                    setTimeout(() => {
-                        resolve('promised1stFresh After 2 secs')
-                    }, 3000)
+                    const value = slow_function(input)
+                    resolve(value)
+                    // setTimeout(() => {
+                    //     resolve('promised1stFresh After 2 secs')
+                    // }, 3000)
                 })
 
-                promiseFresh.then((data) => {
-                    console.log(data)
+                promiseFresh.then((value) => {
+                    console.log(`firstCached: ${value}`)
+                    cache_store(input, value)
+                    console.log(cachedChunks)
+                    resolve(value)
                 })
             }
 
@@ -144,7 +146,7 @@ app.get("/historicalPerformance/:state", async (req, res) => {
     // SOLUTION
     const fast_function = memoize(slow_function)
     const value = await fast_function(input)
-    console.log(`dinal ${value}`) 
+    // console.log(`before sending ${value}`) 
     res.send(value)
 
 });
