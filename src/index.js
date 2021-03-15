@@ -17,6 +17,8 @@ database.loadDatabase();
 // runs faster than slow_function by using cache functions
 function memoize(slow_function) {
 
+    console.log(typeof(slow_function))
+
     function fast_function(input) {
 
         var cachedChunks = {}
@@ -30,7 +32,7 @@ function memoize(slow_function) {
                 // resolve(value)
                 setTimeout(() => {
                     resolve('promised1stFresh After 2 secs')
-                }, 2000)
+                }, 3000)
             })
 
             promiseFresh.then((data) => {
@@ -45,20 +47,26 @@ function memoize(slow_function) {
                 // resolve(value)
                 setTimeout(() => {
                     resolve('promiseCached After 1 secs')
-                }, 2000)
+                }, 1700)
             })
 
             var promiseFresh = new Promise((resolve, reject) => {
-                // const value = slow_function(input)
-                // cache_store(input, value)
-                // resolve(value)
-                setTimeout(() => {
-                    resolve('promiseFresh after 2 secs')
-                }, 1000)
+                console.log(typeof(slow_function))
+                // async (input) =>  {
+                const value = slow_function(input)
+                console.log(value)
+                resolve(value)
+                // }
+
+                // // cache_store(input, value)
+                // // resolve(value)
+                // setTimeout(() => {
+                //     resolve('promiseFresh after 2 secs')
+                // }, 1000)
             })
 
-            Promise.race([promiseCached, promiseFresh]).then((data) => {
-                console.log(data)
+            Promise.race([promiseCached, promiseFresh]).then((value) => {
+                console.log(value)
             })
         }
     }
@@ -129,7 +137,7 @@ app.get("/historicalPerformance/:state", async (req, res) => {
     // const resData = await slow_function(input)
 
     // SOLUTION
-    slow_function = slow_function(input) 
+    // slow_function = slow_function(input) 
     const fast_function = memoize(slow_function)
     const resData = fast_function(input)
 
