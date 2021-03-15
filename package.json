@@ -1,0 +1,23 @@
+{
+  "name": "speed-api-caching",
+  "version": "1.0.0",
+  "description": "Speed up slow function by caching",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "puzzle",
+    "JavaScript",
+    "Node.js",
+    "API",
+    "caching"
+  ],
+  "author": "Rafael Sanin",
+  "license": "ISC",
+  "dependencies": {
+    "airbnbapijs": "^0.10.5",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}
