@@ -13,7 +13,7 @@ app.use(express.json({ limit: '1mb' }));
 const database = new Datastore('database.db');
 database.loadDatabase();
 
-
+var cachedChunks = {}
 // runs faster than slow_function by using cache functions
 function memoize(slow_function) {
 
@@ -23,7 +23,7 @@ function memoize(slow_function) {
 
         return new Promise((resolve, reject) => {
 
-            var cachedChunks = {}
+            // var cachedChunks = {}
             console.log(input)
             cachedChunks[input] = '9'
             // 1.Cache the result of slow_function using the caching functions.
@@ -48,17 +48,13 @@ function memoize(slow_function) {
                     // const value = cache_retrieve(input)
                     // resolve(value)
                     setTimeout(() => {
-                        resolve('promiseCached After 1.7 sec')
-                    }, 1700)
+                        resolve('promiseCached After 3 sec')
+                    }, 3000)
                 })
 
                 var promiseFresh = new Promise((resolve, reject) => {
-                    // console.log(typeof(slow_function))
-                    // async (input) =>  {
                     const value = slow_function(input)
-                    // console.log(value)
                     resolve(value)
-                    // }
 
                     // // cache_store(input, value)
                     // // resolve(value)
@@ -69,6 +65,8 @@ function memoize(slow_function) {
 
                 Promise.race([promiseCached, promiseFresh]).then((value) => {
                     console.log(`fastest response: ${value}`)
+                    cache_store(input, value)
+                    console.log(cachedChunks)
                     resolve(value)
                 })
             }
