@@ -22,34 +22,38 @@ function memoize(slow_function) {
     function fast_function(input) {
 
         return new Promise((resolve, reject) => {
-            // console.log(input)
             // 1.Cache the result of slow_function using the caching functions.
             if (!cachedChunks[input]) {
-                slow_function(input).then((value) => {
-                    console.log(`firstCached: ${value}`)
-                    // 3. Update the cache in either scenario
-                    cache_store(input, value)
-                    console.log(cachedChunks)
-                    resolve(value)
-                }).catch((e) => {
-                    console.log(e)
-                })
+                slow_function(input)
+                    .then((value) => {
+                        // 3. Update the cache in either scenario
+                        cache_store(input, value)
+                        resolve(value)
+                    })
+                    .catch((e) => {
+                        reject(e)
+                    })
             }
 
             // 2. Return the fastest:
             else {
-
                 const promiseCached = cache_retrieve(input)
-                const promiseFresh = slow_function(input).then((value) => {
-                    // 3. Update the cache in either scenario
-                    cache_store(input, value)
-                })
+                const promiseFresh = slow_function(input)
+                    .then((value) => {
+                        // 3. Update the cache in either scenario
+                        cache_store(input, value)
+                    })
+                    .catch((e) => {
+                        reject(e)
+                    })
 
-                Promise.race([promiseCached, promiseFresh]).then((value) => {
-                    console.log(`fastest response: ${value}`)
-                    console.log(cachedChunks)
-                    resolve(value)
-                })
+                Promise.race([promiseCached, promiseFresh])
+                    .then((value) => {
+                        resolve(value)
+                    })
+                    .catch((e) => {
+                        reject(e)
+                    })
             }
 
         })
@@ -125,9 +129,12 @@ app.get("/biggestOccupancyByState/:state", async (req, res) => {
 
     // SOLUTION
     const fast_function = memoize(slow_function)
-    const value = await fast_function(input)
-    // console.log(`before sending ${value}`) 
-    res.send(value)
-
+    try {
+        const value = await fast_function(input)
+        // console.log(`before sending ${value}`) 
+        res.send(value)
+    } catch {
+        res.status(503).send({ 'error': 'Server unavailable' })
+    }
 });
 
