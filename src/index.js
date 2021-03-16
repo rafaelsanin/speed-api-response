@@ -5,7 +5,7 @@ const { resolve } = require("path");
 require('dotenv').config()
 
 const app = express();
-// const X_RAPID_API_KEY = process.env.X_RAPID_API_KEY
+const X_RAPID_API_KEY = process.env.X_RAPID_API_KEY
 port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening at ${port}`));
 app.use(express.static("public"));
@@ -55,7 +55,6 @@ function memoize(slow_function) {
                         reject(e)
                     })
             }
-
         })
     }
     return fast_function;
@@ -82,7 +81,7 @@ function slow_function(input) {
             "port": null,
             "path": input,
             "headers": {
-                "x-rapidapi-key": "73c88b652dmsh50c98cdc792e212p130dcfjsna7e2d23f2abb",
+                "x-rapidapi-key": X_RAPID_API_KEY,
                 "x-rapidapi-host": "mashvisor-api.p.rapidapi.com",
                 "useQueryString": true
             }

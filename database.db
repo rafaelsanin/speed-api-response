@@ -14,6 +14,7 @@
 {"state":"WA","timestamp":1615849103066,"_id":"20Rk4hM7s4YIKZcp"}
 {"state":"WA","timestamp":1615825505624,"_id":"24k5fctdTbDHmGqv"}
 {"state":"CA","timestamp":1615865164187,"_id":"2AehZOGj66nHxF8q"}
+{"state":"WA","timestamp":1615874052354,"_id":"2S5Wh7TAjWIc3Pbg"}
 {"state":"None","timestamp":1615807420262,"_id":"2Sy854qKk9weJjy9"}
 {"state":"WA","timestamp":1615847586469,"_id":"2jBIixtRiFIXQ7VH"}
 {"state":"WA","timestamp":1615823649663,"_id":"3Rw6rLCvxRq9GCJR"}
@@ -32,7 +33,9 @@
 {"state":"CA","timestamp":1615865127568,"_id":"5zzIDrVFiqCGU5pK"}
 {"state":"WA","timestamp":1615841378828,"_id":"62DnWqqutpUDaPUm"}
 {"state":"WA","timestamp":1615819116257,"_id":"62TX3ULnjPp1stQ8"}
+{"state":"TX","timestamp":1615869007005,"_id":"6kXyV5CnqpRgT1lR"}
 {"state":"WA","timestamp":1615824632388,"_id":"6tDClx9SrzECkaSf"}
+{"state":"WA","timestamp":1615874950879,"_id":"76iqntuyHTMIWpmd"}
 {"state":"WA","timestamp":1615818347784,"_id":"78tUS69iyClj7h9u"}
 {"state":"WA","timestamp":1615820460788,"_id":"7ZreK0IWmEnb974U"}
 {"state":"WA","timestamp":1615818739076,"_id":"7ggFklm7nMJQatAc"}
@@ -47,16 +50,19 @@
 {"state":"WA","timestamp":1615864244750,"_id":"AMhckRtrMuiXmt24"}
 {"state":"WA","timestamp":1615825335073,"_id":"ATARMc9EVfFxYAea"}
 {"state":"WA","timestamp":1615818561260,"_id":"AUUCwim7PJUQu2NP"}
+{"state":"TX","timestamp":1615869005256,"_id":"AXKMt1GBd1SCnJBM"}
 {"state":"WA","timestamp":1615816834434,"_id":"AkflGBqtu9jhJX8Q"}
 {"state":"WA","timestamp":1615837371712,"_id":"B0O5vbYEWeUXB7c6"}
 {"state":"WA","timestamp":1615825372812,"_id":"B7bct9hn442nKBGK"}
 {"state":"WA","timestamp":1615824654524,"_id":"BBcgobbITVWpHW5a"}
+{"state":"NY","timestamp":1615874968279,"_id":"BQuOuFkYlnHuVec0"}
 {"state":"WA","timestamp":1615851331606,"_id":"BhMBqkjDrq9EVG1W"}
 {"state":"WA","timestamp":1615824560314,"_id":"C7y7CqPovyWzbw67"}
 {"state":"WA","timestamp":1615826793257,"_id":"CCWNKMPcKZ2E5tlW"}
 {"state":"WA","timestamp":1615827287919,"_id":"CDQkqIDyIqWNy7jo"}
 {"state":"WA","timestamp":1615824638679,"_id":"CXIzYikbISUG9n4B"}
 {"state":"WA","timestamp":1615867532090,"_id":"Ce62GrjfDoyXSZ1Q"}
+{"state":"WA","timestamp":1615874118164,"_id":"CoVeTzaxXjzLdN1M"}
 {"state":"WA","timestamp":1615851454024,"_id":"D8e00KhYQ9hgbXJp"}
 {"state":"WA","timestamp":1615847583352,"_id":"DKjkoRFbgLa7nKVJ"}
 {"state":"WA","timestamp":1615828100749,"_id":"DXwrMbJj7BhnwreW"}
@@ -66,6 +72,7 @@
 {"state":"TX","timestamp":1615846567174,"_id":"EA6InWaJmNOQb3li"}
 {"state":"WA","timestamp":1615818142198,"_id":"ELQ0z3clIYTfUKHL"}
 {"state":"NY","timestamp":1615862624591,"_id":"EZJ6PViBoYrz9Bjt"}
+{"state":"WA","timestamp":1615868989229,"_id":"F2LeF0wnEpFk5D26"}
 {"state":"WA","timestamp":1615809364845,"_id":"FBEcoSh8sJK6UsTP"}
 {"state":"WA","timestamp":1615837665753,"_id":"FCwFCmioyEzC7lTd"}
 {"state":"WA","timestamp":1615851344226,"_id":"FDBfKIkRbQUnjFVH"}
@@ -103,6 +110,7 @@
 {"state":"WA","timestamp":1615809433612,"_id":"KSsNJEVdAMdp33x9"}
 {"state":"WA","timestamp":1615844359123,"_id":"KWOAlg7xBsOGlocH"}
 {"state":"WA","timestamp":1615804824689,"_id":"KdiSNcgwpnBouckO"}
+{"state":"WA","timestamp":1615874371910,"_id":"Kkc5JyxjnEWwjFbH"}
 {"state":"WA","timestamp":1615828940548,"_id":"KrdzjpvxqvDO9Chu"}
 {"state":"WA","timestamp":1615860944815,"_id":"L4lgxNJX9I6vPCG2"}
 {"state":"WA","timestamp":1615824483557,"_id":"LaPGvqTIHVeQD5WY"}
@@ -141,6 +149,7 @@
 {"state":"WA","timestamp":1615819104188,"_id":"RnrL6Tdx1CnHEIqC"}
 {"state":"WA","timestamp":1615847870919,"_id":"SC5jfiBjjbS6XqvE"}
 {"state":"WA","timestamp":1615844741595,"_id":"SD39dZArz7PXRZgZ"}
+{"state":"WA","timestamp":1615868986563,"_id":"SYXcsvN018upT94o"}
 {"state":"WA","timestamp":1615840268478,"_id":"Sm8FXA6gwTzvnHwv"}
 {"state":"WA","timestamp":1615805439436,"_id":"SmQ36THXqJT1yaQo"}
 {"state":"FL","timestamp":1615844721238,"_id":"T8NWxgBFiH6WHtkZ"}
@@ -197,6 +206,7 @@
 {"state":"WA","timestamp":1615824801020,"_id":"an8Sw3jTJsbs6DH6"}
 {"state":"NY","timestamp":1615863085461,"_id":"bb75w59jXeaTSmWZ"}
 {"state":"WA","timestamp":1615865307126,"_id":"bdooTn9jut7rth5t"}
+{"state":"WA","timestamp":1615874234227,"_id":"blYmrXsLhmp3C2RO"}
 {"state":"WA","timestamp":1615812431065,"_id":"bqXphbVWSUXXFqhI"}
 {"state":"WA","timestamp":1615825257378,"_id":"c1PJeqPHDBAuZAJ6"}
 {"state":"TX","timestamp":1615847609638,"_id":"cBFQxD7U9hHUVpoj"}
@@ -217,6 +227,7 @@
 {"state":"WA","timestamp":1615863103478,"_id":"eb39fWVUl6OUBvHX"}
 {"state":"CA","timestamp":1615864987852,"_id":"ebzbG5YjyUCkbvmy"}
 {"state":"TX","timestamp":1615845521498,"_id":"enjrkiQ45GFr7KDK"}
+{"state":"WA","timestamp":1615874432373,"_id":"f3PYL1oZHgLJEcF4"}
 {"state":"NY","timestamp":1615867272576,"_id":"f6HTwTmUB2rRU28p"}
 {"state":"WA","timestamp":1615847978134,"_id":"fNiJcC0xrkOjOuHR"}
 {"state":"TX","timestamp":1615846562842,"_id":"fZ8Qq1LuKiFEEiQv"}
@@ -246,6 +257,7 @@
 {"state":"WA","timestamp":1615840057585,"_id":"jE1Pavu7XllDha0h"}
 {"state":"WA","timestamp":1615813653898,"_id":"jF0ZTJ0dFeD1eEhT"}
 {"state":"WA","timestamp":1615846574748,"_id":"jJJrIMDfkPToWkE6"}
+{"state":"CA","timestamp":1615869002249,"_id":"jMGNHaG7UnscYgQI"}
 {"state":"WA","timestamp":1615851442099,"_id":"jULZKiCHgKgZDZDF"}
 {"state":"WA","timestamp":1615824981861,"_id":"jV0xZA4Mv6VF2dTz"}
 {"state":"WA","timestamp":1615814322812,"_id":"jctfzW3ZYUV8yLzJ"}
@@ -275,10 +287,12 @@
 {"state":"WA","timestamp":1615826573173,"_id":"oz9AabzNYoHqZb5k"}
 {"state":"WA","timestamp":1615818428334,"_id":"p49ioqVgI6Mz9Uo9"}
 {"state":"WA","timestamp":1615809459753,"_id":"pDAuvolUHbRANRqS"}
+{"state":"WA","timestamp":1615874094767,"_id":"pNKJXhftcfchJU8w"}
 {"state":"WA","timestamp":1615826639935,"_id":"pR731sg11tLIN2PU"}
 {"state":"WA","timestamp":1615847975118,"_id":"pncFqhD7nubAIxZd"}
 {"state":"CA","timestamp":1615865157688,"_id":"poag7n7IEhT1KcCp"}
 {"state":"WA","timestamp":1615846577678,"_id":"ptgAQIo9ib1SMFoN"}
+{"state":"CA","timestamp":1615868999502,"_id":"q0C43bQa9P1VL6Hg"}
 {"state":"WA","timestamp":1615818937342,"_id":"qOMFfhooiwwMBjJ7"}
 {"state":"NY","timestamp":1615851348473,"_id":"qdT1MQ37QFJKodqr"}
 {"state":"WA","timestamp":1615812754920,"_id":"qgNq3j3NGxNMkUNw"}
@@ -294,6 +308,7 @@
 {"state":"WA","timestamp":1615862595030,"_id":"sCy6XJ640dyyTbSJ"}
 {"state":"WA","timestamp":1615820069341,"_id":"sLGDh2ltgYKoJfTc"}
 {"state":"WA","timestamp":1615819092339,"_id":"shCfXAIJTDGsJPCY"}
+{"state":"NY","timestamp":1615868996519,"_id":"snHgOo3ixlj2JwaG"}
 {"state":"WA","timestamp":1615860911885,"_id":"t0NjS4CZozvKtvBz"}
 {"state":"WA","timestamp":1615844624496,"_id":"uET9HFwqsvO6nW8w"}
 {"state":"WA","timestamp":1615861089544,"_id":"uIvWNYer1nKVqvzy"}
@@ -304,6 +319,8 @@
 {"state":"TX","timestamp":1615846085007,"_id":"urGGngkOvrY9oUW6"}
 {"state":"WA","timestamp":1615819025096,"_id":"vBz5YHXaMx4XB8KC"}
 {"state":"FL","timestamp":1615845221466,"_id":"vRjnai8sXUSG5xO4"}
+{"state":"WA","timestamp":1615874379035,"_id":"wEjHNu3xY3upeV9V"}
+{"state":"NY","timestamp":1615868993553,"_id":"wQVpVtfSSXg9j6Fc"}
 {"state":"WA","timestamp":1615865185816,"_id":"weMjG8ZYnFSiJ1pj"}
 {"state":"WA","timestamp":1615845215749,"_id":"wiNr0mLwKpbakuPv"}
 {"state":"WA","timestamp":1615861469318,"_id":"woF01U4MfOeIFHFf"}
