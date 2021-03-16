@@ -2,6 +2,7 @@ const https = require("https");
 const express = require("express");
 const Datastore = require('nedb');
 const { resolve } = require("path");
+require('dotenv').config()
 
 const app = express();
 // const X_RAPID_API_KEY = process.env.X_RAPID_API_KEY
@@ -9,6 +10,7 @@ port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening at ${port}`));
 app.use(express.static("public"));
 app.use(express.json({ limit: '1mb' }));
+// console.log(process.env)
 
 const database = new Datastore('database.db');
 database.loadDatabase();
@@ -17,47 +19,34 @@ var cachedChunks = {}
 // runs faster than slow_function by using cache functions
 function memoize(slow_function) {
 
-    // console.log(typeof(slow_function))
-
-    async function fast_function(input) {
+    function fast_function(input) {
 
         return new Promise((resolve, reject) => {
-
             // console.log(input)
             // 1.Cache the result of slow_function using the caching functions.
             if (!cachedChunks[input]) {
-                var promiseFresh = new Promise((resolve, reject) => {
-                    const value = slow_function(input)
-                    resolve(value)
-                })
-
-                promiseFresh.then((value) => {
+                slow_function(input).then((value) => {
                     console.log(`firstCached: ${value}`)
-                    // update the cache in either scenario
+                    // 3. Update the cache in either scenario
                     cache_store(input, value)
                     console.log(cachedChunks)
                     resolve(value)
+                }).catch((e) => {
+                    console.log(e)
                 })
             }
 
             // 2. Return the fastest:
             else {
-                var promiseCached = new Promise((resolve, reject) => {
-                    const value = cache_retrieve(input)
-                    console.log('cache hit')
-                    resolve(value)
-                })
 
-                var promiseFresh = new Promise((resolve, reject) => {
-                    const value = slow_function(input)
-                    console.log('cache missed')
-                    resolve(value)
+                const promiseCached = cache_retrieve(input)
+                const promiseFresh = slow_function(input).then((value) => {
+                    // 3. Update the cache in either scenario
+                    cache_store(input, value)
                 })
 
                 Promise.race([promiseCached, promiseFresh]).then((value) => {
                     console.log(`fastest response: ${value}`)
-                    // update the cache in either scenario
-                    cache_store(input, value)
                     console.log(cachedChunks)
                     resolve(value)
                 })
@@ -79,7 +68,7 @@ async function cache_retrieve(key) {
 }
 
 // fetches data from a slow data source 
-async function slow_function(input) {
+function slow_function(input) {
 
     return new Promise((resolve, reject) => {
 
@@ -89,7 +78,7 @@ async function slow_function(input) {
             "port": null,
             "path": input,
             "headers": {
-                "x-rapidapi-key": "a4cb807fdfmshda5b5c2af63a1f8p166619jsn381026d83439",
+                "x-rapidapi-key": "73c88b652dmsh50c98cdc792e212p130dcfjsna7e2d23f2abb",
                 "x-rapidapi-host": "mashvisor-api.p.rapidapi.com",
                 "useQueryString": true
             }
@@ -122,7 +111,7 @@ async function slow_function(input) {
 
 // This endpoint retrieves the cities has the biggest occupancy in a specific state.
 app.get("/biggestOccupancyByState/:state", async (req, res) => {
-    
+
     const state = req.params.state
     const timestamp = Date.now()
     reqData = { state, timestamp }
